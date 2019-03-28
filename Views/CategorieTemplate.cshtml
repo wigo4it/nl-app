@@ -1,0 +1,101 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage<NLappCMS.Models.Categorie>
+@using NLappCMS.Models;
+
+@{
+    Layout = "MasterNLapp.cshtml";
+
+    var onderwerpen = Model.Content.Children<NLappCMS.Models.Onderwerp>();
+    var kaarten = Model.Content.Children<NLappCMS.Models.KaartPagina>();
+
+    Func<Onderwerp, string> OnderwerpNaam = (Onderwerp onderwerp) =>
+    {
+        if (onderwerp == null || onderwerp.Translated == null)
+        {
+            return Umbraco.GetDictionaryValue("Missende inhoud");
+        }
+        return onderwerp.Translated.OnderwerpNaam;
+    };
+
+    Func<KaartPagina, string> KaartTitel = (KaartPagina kaart) =>
+    {
+        if (kaart == null)
+        {
+            return Umbraco.GetDictionaryValue("Missende inhoud");
+        }
+        return kaart.TranslatedTitel;
+    };
+
+    var requestPathParts = Request.Url.PathAndQuery.Split('/');
+    var reqCityAndLanguagePath = string.Join("/", requestPathParts.Take(Math.Min(3, requestPathParts.Length)));
+
+}
+
+@section Header {
+    <meta name="IE_RM_OFF" content="true">
+}
+
+@section BodyClass {
+    class="list  cat-@(Model.Content.SortOrder + 1)"
+}
+
+<div class="wrapper">
+    @Html.Raw(System.IO.File.ReadAllText(Server.MapPath("~/img/header_light.svg")))
+    @Html.Raw(System.IO.File.ReadAllText(Server.MapPath("~/img/header_dark.svg")))
+
+    <header role="banner">
+        <a class="back" href="@reqCityAndLanguagePath" aria-label="@Umbraco.GetDictionaryValue("TerugNaarHome")">@Umbraco.GetDictionaryValue("Terug")</a>
+        <span class="category" role="heading" 
+              aria-label="@Umbraco.GetDictionaryValue("Categorie") @Model.Content.Translated.CategorieNaam">
+            @Model.Content.Translated.CategorieNaam
+        </span>
+        @Html.Partial("SearchForm", Umbraco.UmbracoContext)
+    </header>
+
+    <main role="main">
+        <div class="topics" role="navigation" aria-label="@Umbraco.GetDictionaryValue("OpenOnderwerp")">
+            <nav>
+                <ul role="list">
+                    @foreach (var onderwerp in onderwerpen)
+                    {
+                        <li role="listitem">
+                            <a href=@onderwerp.Url class="topic" role="button" aria-label="@Umbraco.GetDictionaryValue("GaNaarPagina") @OnderwerpNaam(onderwerp)">
+                                <span class="icon" aria-hidden="true">
+                                    @Html.Raw(System.IO.File.ReadAllText(Server.MapPath("~/img/arrowright.svg")))
+                                </span>
+                                <span class="text">@OnderwerpNaam(onderwerp)</span>
+                            </a>
+                        </li>
+                    }
+
+                    @foreach (var kaart in kaarten)
+                    {
+                        <li role="listitem">
+                            <a href=@kaart.Url class="topic" role="button" aria-label="@Umbraco.GetDictionaryValue("GaNaarPagina") @KaartTitel(kaart)">
+                                <span class="icon" aria-hidden="true">
+                                    @Html.Raw(System.IO.File.ReadAllText(Server.MapPath("~/img/arrowright.svg")))
+                                </span>
+                                <span class="text">@KaartTitel(kaart)</span>
+                            </a>
+                        </li>
+                    }
+                </ul>
+            </nav>
+
+            <div class="up" aria-hidden="true" tabindex="-1"></div>
+        </div>
+    </main>
+</div>
+
+@section Scripts {
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            window.nlapp.categorie.init();
+            window.nlapp.categorie.setContentViewName('@Model.Content.Name');
+        });
+
+        $(window).on("load", function () {
+            window.nlapp.categorie.load();
+        });
+    </script>
+}

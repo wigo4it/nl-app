@@ -1,0 +1,10 @@
+﻿User-agent: *
+Disallow: /img/
+Disallow: /icons/
+Disallow: /css/
+Disallow: /scripts/
+Disallow: /media/
+Disallow: /error.html
+Disallow: /*/search?q=
+Disallow: /*/serviceworkerfiles
+Disallow: /*/manifest

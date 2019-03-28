@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<language alias="nl" intName="Dutch" localName="Nederlands" lcid="19" culture="nl-NL">
+  <creator>
+    <name>Wigo4it</name>
+  </creator>
+  <area alias="dialogs">
+    <key alias="linkUrl">Adres</key>
+    <key alias="linkName">Naam</key>
+    <key alias="linkType">Soort</key>
+  </area>
+  <area alias="placeholders">
+    <key alias="enterLinkUrl">Te openen web-adres (url)...</key>
+    <key alias="enterLinkName">Weer te geven naam...</key>
+    <key alias="enterLinkType">Kies het soort link...</key>
+  </area>
+  <area alias="validation">
+    <key alias="maxcount">Maximum aantal items = </key>
+  </area>
+</language>

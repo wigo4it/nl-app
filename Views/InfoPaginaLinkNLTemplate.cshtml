@@ -1,0 +1,13 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage<NLappCMS.Models.InfoPaginaLinkNL>
+@using NLappCMS.Models
+
+@{
+    Layout = "MasterNLapp.cshtml";
+
+    int contentId = Model.Content.InhoudKiezer.First().Id;
+    var linkedInfoPaginaNL = (InfoPaginaNL)Umbraco.TypedContent(contentId);
+}
+
+<section>
+    @Html.Partial("InfoPaginaNL", linkedInfoPaginaNL);
+</section>

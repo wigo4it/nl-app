@@ -1,0 +1,26 @@
+﻿<div class="translations" ng-controller="TranslationsController as vm">
+    <div class="languages">
+        <strong>Talen: </strong><span ng-repeat="language in languages">{{language.name}} ({{language.culture}}); </span>
+    </div>
+
+    <h3>Missende vertalingen</h3>
+
+    <div class="legend">
+        <ul>
+            <li class="filled"><div></div><div><localize key="legend_filled"></localize></div></li>
+            <li class="missing"><div></div><div><localize key="legend_missing"></localize></div></li>
+            <li class="empty"><div></div><div><localize key="legend_empty"></localize></div></li>
+        </ul>
+    </div>
+
+    <span class="errors" ng-hide="errors==''">{{errors}}</span>
+
+    <button ng-if="!activated" ng-click="activate()" class="activate" value=""><localize key="legend_activate"></localize></button>
+
+    <div ng-if="activated">
+        <div class="missing table" ng-repeat="node in missingTranslations.nodes">
+            <ng-include src="'../app_plugins/nlappdashboard/templates/translations-page.template.html'"></ng-include>
+        </div>
+    </div>
+
+</div>

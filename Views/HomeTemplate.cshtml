@@ -1,0 +1,93 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage<NLappCMS.Models.Home>
+
+@using Umbraco.Web;
+@using NLappCMS.Models;
+
+@{
+    Layout = "MasterNLapp.cshtml";
+
+    var categoriePages = Model.Content.Children<NLappCMS.Models.Categorie>().Where(x => x.IsVisible());
+
+    var instellingen = new Instellingen()
+    {
+        LanguageLabels = ApplicationContext.Services.LocalizationService.GetDictionaryItemByKey("Taal").Translations,
+        Root = Model.Content.Site(),
+        Context = this.UmbracoContext,
+        Visible = (Request.QueryString["settings"] == "1")
+    };
+
+    var logo = Model.Content != null ? Model.Content.Logo : null;
+    var logoUrl = logo != null ? logo.Url : "/img/logo.svg";
+}
+
+@section Header {
+    <meta name="IE_RM_OFF" content="true">
+}
+
+@if (instellingen.Visible)
+{
+    @section BodyClass {
+        class="home menuopen"
+    }
+}
+else
+{
+    @section BodyClass {
+        class="home"
+    }
+}
+
+<div class="wrapper">
+    @Html.Raw(System.IO.File.ReadAllText(Server.MapPath("~/img/header_light.svg")))
+    @Html.Raw(System.IO.File.ReadAllText(Server.MapPath("~/img/header_dark.svg")))
+
+    <header role="banner" aria-hidden="false">
+        @Html.Partial("SearchForm", Umbraco.UmbracoContext)
+
+        <div id="menu" class="menu" role="button"
+             aria-label="@Umbraco.GetDictionaryValue("InstellingenMenu")"
+             aria-expanded="false" aria-haspopup="true"
+             tabindex="0"></div>
+    </header>
+
+    <main role="main" aria-hidden="false">
+        <div class="categories">
+            <nav role="navigation" aria-label="@Umbraco.GetDictionaryValue("OpenCategorie")">
+                <ul>
+                    @foreach (var categoriePage in categoriePages)
+                    {
+                        <li class="cat-@(categoriePage.SortOrder + 1)">
+                            <a href="@categoriePage.Url" aria-label="@Umbraco.GetDictionaryValue("GaNaarPagina") @categoriePage.Translated.CategorieNaam">
+                                <span class="icon" aria-hidden="true">
+                                    @Html.Raw(System.IO.File.ReadAllText(Server.MapPath("~/img/cat/cat-" + (categoriePage.SortOrder + 1) + "_home.svg")))
+                                </span>
+                                <span class="text">@categoriePage.Translated.CategorieNaam</span>
+                            </a>
+                        </li>
+                    }
+                </ul>
+            </nav>
+        </div>
+    </main>
+</div>
+
+@Html.Partial("Instellingen", instellingen)
+
+<div id="splash" class="splash" aria-hidden="true">
+    <div class="town">
+        <img src="@logoUrl" alt="">
+    </div>
+</div>
+
+@section Scripts {
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            window.nlapp.home.init();
+        });
+
+        $(window).on("load", function () {
+            window.nlapp.home.load();
+        });
+    </script>
+}

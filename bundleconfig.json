@@ -1,0 +1,20 @@
+﻿[
+  {
+    "outputFileName": "css/nlapp.min.css",
+    "inputFiles": [
+      "css/nlapp.css",
+      "css/nlapp-welkom.css"
+    ]
+  },
+  {
+    "outputFileName": "scripts/nlapp.min.js",
+    "inputFiles": [
+      "scripts/nlapp-bundle.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    },
+    "sourceMap": false
+  }
+]

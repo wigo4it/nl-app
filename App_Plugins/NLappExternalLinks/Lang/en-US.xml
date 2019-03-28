@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<language alias="en_us" intName="English (US)" localName="English (US)" lcid="" culture="en-US">
+  <creator>
+    <name>Wigo4it</name>
+  </creator>
+  <area alias="dialogs">
+    <key alias="linkUrl">Url</key>
+    <key alias="linkName">Name</key>
+    <key alias="linkType">Type</key>
+  </area>
+  <area alias="placeholders">
+    <key alias="enterLinkUrl">Enter the url...</key>
+    <key alias="enterLinkName">Enter the display name...</key>
+    <key alias="enterLinkType">Choose the link type...</key>
+  </area>
+  <area alias="validation">
+    <key alias="maxcount">Maximum number of items = </key>
+  </area>
+</language>

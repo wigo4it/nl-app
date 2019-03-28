@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120">
+  <defs><style>.a{fill:none;}.b{fill:#72deff;}.c{fill:#55a6bf;}</style></defs>
+  <title>participate</title>
+  <path class="b" d="M52.06,52.79H83a8,8,0,0,1,8,8V83.54a0,0,0,0,1,0,0H44.06a0,0,0,0,1,0,0V60.79A8,8,0,0,1,52.06,52.79Z"/>
+  <circle class="b" cx="67.53" cy="36.8" r="15.52"/>
+  <path class="c" d="M37,68H67.94a8,8,0,0,1,8,8V98.72a0,0,0,0,1,0,0H29a0,0,0,0,1,0,0V76A8,8,0,0,1,37,68Z"/>
+  <circle class="c" cx="52.47" cy="51.98" r="15.52"/>
+</svg>

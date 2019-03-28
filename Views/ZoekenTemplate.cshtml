@@ -1,0 +1,174 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage<NLappCMS.Models.Search>
+
+@using NLappCMS.CustomExtensions
+@using NLappCMS.Models;
+@using System.Threading;
+@using System.Web.Configuration;
+
+@{
+    Layout = "MasterNLapp.cshtml";
+
+    string q;
+    int resultCount = 0;
+    try
+    {
+        q = Request.QueryString["q"];
+    }
+    catch
+    {
+        q = string.Empty;
+    }
+
+    IEnumerable<Examine.SearchResult> searchResults = null;
+
+    Func<IPublishedContent, InfoPaginaNL> ToInfoPaginaNl = c => ((InfoPaginaNL)c);
+
+    if (!string.IsNullOrEmpty(q))
+    {
+        searchResults = new SearchHelper().Search(Html.Encode(q), "NlappExternalSearcher");
+        resultCount = searchResults.Count();
+
+        string configSearchCountMax = WebConfigurationManager.AppSettings["nlapp-search-max"];
+        if (!string.IsNullOrWhiteSpace(configSearchCountMax))
+        {
+            int searchCountMax;
+            if (Int32.TryParse(configSearchCountMax, out searchCountMax))
+            {
+                if (searchCountMax > 0) {
+                    searchResults = searchResults.Take(searchCountMax);
+                }
+            }
+        }
+    }
+    else
+    {
+        q = string.Empty;
+    }
+
+    string searchLog = "Zoekterm '" + @q + "' (" + @resultCount + ")";
+}
+
+@section BodyClass {
+    class="searchresults"
+}
+
+<div class="wrapper">
+
+    @Html.Raw(System.IO.File.ReadAllText(Server.MapPath("~/img/header_light.svg")))
+    @Html.Raw(System.IO.File.ReadAllText(Server.MapPath("~/img/header_dark.svg")))
+
+    <header role="banner">
+        <a class="back" href="/" aria-label="@Umbraco.GetDictionaryValue("TerugNaarHome")">@Umbraco.GetDictionaryValue("Terug")</a>
+
+        <span title="@Umbraco.GetDictionaryValue("ZoekResultaten")" class="category"
+              role="heading" aria-label="@Umbraco.GetDictionaryValue("ZoekResultaten")">
+            @Umbraco.GetDictionaryValue("ZoekResultaten")
+        </span>
+
+        @Html.Partial("SearchForm", Umbraco.UmbracoContext)
+    </header>
+
+    <main role="main">
+        <div class="content" role="navigation" aria-label="@Umbraco.GetDictionaryValue("ZoekResultaten")">
+
+            <h1>@Umbraco.GetDictionaryValue("GezochtOp"): "@q.ToUpper()"</h1>
+            <div class="results" role="list">
+                <ul>
+
+                    @if (searchResults != null && searchResults.Any())
+                    {
+                        foreach (var item in searchResults)
+                        {
+                            var content = Umbraco.TypedContent(item.Fields["id"]);
+                            if (content != null)
+                            {
+                                <li class="result" role="listitem">
+                                    @{
+                                        string resultTitel = string.Empty;
+                                        IHtmlString resultContent = new HtmlString(string.Empty);
+                                        string resultCategorie = string.Empty;
+                                        string resultCategorieNaam = string.Empty;
+
+                                        switch (content.ContentType.Alias.ToLower())
+                                        {
+                                            case DocumentTypes.InfoPagina:
+                                                {
+                                                    InfoPagina resultModel = (InfoPagina)content;
+                                                    resultTitel = resultModel.Translated.Titel;
+                                                    resultContent = resultModel.Translated.Omschrijving;
+                                                    resultCategorie = "cat-" + (content.Parent.Parent.SortOrder + 1);
+                                                    resultCategorieNaam = new Categorie(content.Parent.Parent).Translated.CategorieNaam;
+                                                    break;
+                                                }
+                                            case DocumentTypes.InfoPaginaNl:
+                                                {
+                                                    InfoPaginaNL resultModel = (InfoPaginaNL)content;
+                                                    resultTitel = resultModel.Translated.Titel;
+                                                    resultContent = resultModel.Translated.Omschrijving;
+                                                    resultCategorie = "cat-" + (content.Parent.Parent.SortOrder + 1);
+                                                    resultCategorieNaam = new Categorie(content.Parent.Parent).Translated.CategorieNaam;
+                                                    break;
+                                                }
+                                            case DocumentTypes.Onderwerp:
+                                                {
+                                                    Onderwerp resultModel = (Onderwerp)content;
+                                                    resultTitel = resultModel.Translated.OnderwerpNaam;
+                                                    resultContent = resultModel.Translated.Omschrijving;
+                                                    resultCategorie = "cat-" + (content.Parent.SortOrder + 1);
+                                                    resultCategorieNaam = new Categorie(content.Parent).Translated.CategorieNaam;
+                                                    break;
+                                                }
+                                            case DocumentTypes.InfoPaginaLinkNl:
+                                                {
+                                                    InfoPaginaNL resultmodel = ToInfoPaginaNl(ToInfoPaginaNl(((InfoPaginaLinkNL)content).InhoudKiezer.FirstOrDefault()));
+                                                    resultTitel = resultmodel.Translated.Titel;
+                                                    resultContent = resultmodel.Translated.Omschrijving;
+                                                    resultCategorie = "cat-" + (content.Parent.Parent.SortOrder + 1);
+                                                    resultCategorieNaam = new Categorie(content.Parent.Parent).Translated.CategorieNaam;
+                                                    break;
+                                                }
+                                            default:
+                                                {
+                                                    Categorie resultModel = (Categorie)content;
+                                                    resultTitel = resultModel.Translated.CategorieNaam;
+                                                    resultCategorie = "cat-" + (content.SortOrder + 1);
+                                                    resultCategorieNaam = resultModel.Translated.CategorieNaam;
+                                                    break;
+                                                }
+                                        }
+
+                                        <a class="internal @resultCategorie.ToLower()" href="@content.Url" target="_self">
+                                            <h2>@resultTitel</h2>
+                                            <div class="result-content">@resultContent</div>
+                                            <div class="cat @resultCategorie.ToLower()">@resultCategorieNaam</div>
+                                        </a>
+                                    }
+                                </li>
+                            }
+                        }
+                    }
+                    else
+                    {
+                        <li>@Umbraco.GetDictionaryValue("NietsGevonden")</li>
+                    }
+                </ul>
+            </div>
+
+            <div class="up" aria-hidden="true" tabindex="-1"></div>
+        </div>
+    </main>
+</div>
+
+@section Scripts {
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            window.nlapp.zoeken.init();
+            window.nlapp.zoeken.setContentViewName('@searchLog');
+        });
+
+        $(window).on("load", function () {
+            window.nlapp.zoeken.load();
+        });
+    </script>
+}

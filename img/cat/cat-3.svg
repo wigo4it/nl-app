@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120">
+  <defs><style>.a{fill:none;}.b{fill:#bf9b33;}.c{fill:#ffcf44;}</style></defs>
+  <title>work</title>
+  <path class="b" d="M24,67.5H96a0,0,0,0,1,0,0v23a4,4,0,0,1-4,4H28a4,4,0,0,1-4-4v-23A0,0,0,0,1,24,67.5Z"/>
+  <rect class="c" x="24" y="42.5" width="72" height="30" rx="4" ry="4"/>
+  <path class="b" d="M73,25.5H47a4,4,0,0,0-4,4v13h6v-11H71v11h6v-13A4,4,0,0,0,73,25.5Z"/>
+</svg>

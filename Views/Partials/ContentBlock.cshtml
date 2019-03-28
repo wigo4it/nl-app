@@ -1,0 +1,10 @@
+﻿@model IHtmlString
+@using System.Configuration;
+
+@{
+    var content = Model ?? new HtmlString("");
+}
+
+    <div role="contentinfo">
+        @Html.Raw(@content)
+    </div>
