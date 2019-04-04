@@ -68,6 +68,7 @@ Er wordt gebruik gemaakt van de volgende technology-stack:
 - C#
 - Umbraco (v7.10.0)
 - SQL server (2008 en hoger)
+- log4net
 - TypeScript (v2.9.2) & JavaScript
 - Html5
 - Css & Sass
