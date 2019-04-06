@@ -1,0 +1,397 @@
+.settings {
+    position: fixed;
+    left: 100%;
+    top: 0;
+    width: calc(85% - 36px);
+    min-width: 320px;
+    background-color: $white;
+    transition: all .4s;
+    z-index: 9999;
+    visibility: hidden;
+    pointer-events: none;
+    box-shadow: 0 0 16px rgba(0,0,0,.28);
+    bottom: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    h2 {
+        margin-bottom: 6px;
+    }
+
+    .content, #pwaContent {
+        position: relative;
+        width: 70%;
+        left: calc(50% - 18px);
+        transform: translateX(-50%);
+        text-align: left;
+        float: left;
+        clear: both;
+        z-index: 101;
+
+        h2 {
+            float: left;
+            margin-top: 4px;
+        }
+
+        ul {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            width: 100%;
+            float: left;
+
+            li {
+                padding: 0;
+                margin: 0;
+                width: 100%;
+                float: left;
+
+                a {
+                    position: relative;
+                    font-size: 1.0em;
+                    letter-spacing: 0.024em;
+                    color: $gray-800;
+                    float: left;
+                    padding: 20px 0 20px 40px;
+                    margin: 0;
+                    display: block;
+                    width: 100%;
+                    background-repeat: no-repeat;
+                    background-size: auto;
+                    background-position: center left;
+                    border-bottom: 1px solid $gray-400;
+                    background-color: transparent;
+
+                    &:after {
+                        position: absolute;
+                        content: "";
+                        right: 0;
+                        top: 50%;
+                        transform: translateY(-50%);
+                        background-image: url(../img/right.svg);
+                        width: 24px;
+                        height: 24px;
+                        background-repeat: no-repeat;
+                        background-size: auto;
+                        background-position: center center;
+                    }
+                }
+
+                a.pwa-installed.status-offline {
+                    display: none;
+                }
+
+                a.pwa-installed.status-online, a.pwa-installed.status-offline {
+                    &:after {
+                        display: none;
+                    }
+                }
+
+                a.pwa-installed.status-online {
+                    visibility: visible;
+                    background-image: url(../img/online-status.svg);
+                }
+
+                a.pwa-installed.status-offline {
+                    visibility: hidden;
+                    background-image: url(../img/offline-status.svg);
+                }
+            }
+        }
+    }
+
+    .content {
+        top: 70px;
+
+        ul {
+            li {
+                a {
+                    &.home {
+                        background-image: url(../img/home.svg);
+                    }
+
+                    &.language {
+                        background-image: url(../img/lang.svg);
+
+                        &:focus {
+                            font-weight: 500;
+                        }
+                    }
+
+                    &.town {
+                        background-image: url(../img/place.svg);
+
+                        &:focus {
+                            font-weight: 500;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    #pwaContent {
+        top: 70px;
+        visibility: hidden;
+
+        &.active, &.installed {
+            visibility: visible;
+        }
+
+        ul {
+            li {
+                a.pwa {
+                    display: none;
+                    background-image: url(../img/addtohome.svg);
+                }
+
+                a.pwa-installed {
+                    display: none;
+                    background-image: url(../img/appinstalled.svg);
+
+                    &:after {
+                        display: none;
+                    }
+                }
+            }
+        }
+
+        &.active {
+            ul {
+                li {
+                    a.pwa {
+                        display: block;
+                    }
+
+                    a.pwa-installed {
+                        display: none;
+                    }
+                }
+            }
+        }
+
+        &.installed {
+            ul {
+                li {
+                    a.pwa {
+                        display: none;
+                    }
+
+                    a.pwa-installed {
+                        display: block;
+
+                        &.status-offline {
+                            display: none;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    &.active {
+        visibility: visible;
+        pointer-events: auto;
+        left: calc(15% + 36px);
+    }
+
+    .popup {
+        display: none;
+        position: fixed;
+        left: 20px;
+        top: 50%;
+        width: calc(100% - 40px);
+        height: auto;
+        transform: translateY(-50%);
+        background-color: $white;
+        padding: 20px;
+        box-shadow: 0 0 16px rgba(0,0,0,.28);
+        transition: all .4s;
+        text-align: left;
+        z-index: 300;
+
+        ul {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            width: 100%;
+            float: left;
+
+            li {
+                padding: 0;
+                margin: 0;
+                width: 100%;
+                float: left;
+
+                a {
+                    float: left;
+                    width: 100%;
+                    padding: 14px 0 14px 50px;
+                    display: block;
+                    position: relative;
+                    color: $gray-800;
+                    margin: 10px 0;
+
+                    &:before {
+                        content: "";
+                        position: absolute;
+                        left: 0;
+                        top: 50%;
+                        width: 48px;
+                        height: 48px;
+                    }
+
+                    &.active {
+                        font-weight: 600;
+                    }
+
+                    &.active:before {
+                        transform: translateY(-50%);
+                        background-image: url(../img/check.svg);
+                        background-repeat: no-repeat;
+                        background-size: auto;
+                        background-position: center center;
+                    }
+
+                    &:focus:before, &:hover:before {
+                        transform: translateY(-50%);
+                        background-image: url(../img/check.svg);
+                        background-repeat: no-repeat;
+                        background-size: auto;
+                        background-position: center center;
+                    }
+                }
+            }
+        }
+
+        &.active {
+            display: block;
+        }
+
+        .close {
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 48px;
+            height: 48px;
+            cursor: pointer;
+            background-image: url(../img/close.svg);
+            background-size: auto;
+            background-repeat: no-repeat;
+            background-position: center center;
+
+            &:focus {
+                background-image: url(../img/close-focus.svg);
+            }
+        }
+    }
+
+    .menu {
+        position: absolute;
+        right: 48px;
+        top: 28px;
+        width: 48px;
+        height: 48px;
+        cursor: pointer;
+        background-image: url(../img/close.svg);
+        background-size: auto;
+        background-repeat: no-repeat;
+        background-position: center center;
+
+        &:focus {
+            background-image: url(../img/close-focus.svg);
+        }
+    }
+
+    .logos {
+        position: relative;
+        left: calc(50% - 18px);
+        width: calc(100% - 40px);
+        height: 100px;
+        transform: translateX(-50%);
+        float: left;
+        clear: both;
+        padding-top: 160px;
+
+        .logo {
+            position: relative;
+            left: 50%;
+            top: 50%;
+            width: 120px;
+            transform: translateY(-50%) translateX(-50%);
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+
+            &.nlapp {
+                background-image: url(../img/logo.svg);
+            }
+
+            &:nth-child(2) {
+                left: calc(50% + 32px);
+            }
+
+            img {
+                max-width: 100%;
+                max-height: 100%;
+                width: 100%;
+            }
+
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-position: center center;
+        }
+    }
+
+    .popupbg {
+        content: "";
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: $white;
+        opacity: 0;
+        pointer-events: none;
+        transition: all .2s;
+        visibility: hidden;
+
+        &.active {
+            opacity: 0.9;
+            pointer-events: all;
+            visibility: visible;
+            z-index: 200;
+        }
+    }
+}
+
+/* Offline */
+.offline {
+    .content ul li a, #pwaContent ul li a {
+        color: $gray-600;
+
+        &:after {
+            display: none;
+        }
+    }
+
+    .settings {
+        #pwaContent ul li a.pwa-installed.status-online {
+            display: none;
+            visibility: hidden;
+        }
+
+        #pwaContent ul li a.pwa-installed.status-offline {
+            visibility: visible;
+        }
+
+        #pwaContent ul li a.pwa {
+            opacity: 0.5;
+        }
+
+        #pwaContent ul li a.pwa.status-offline {
+            opacity: 1;
+            display: block;
+        }
+    }
+}

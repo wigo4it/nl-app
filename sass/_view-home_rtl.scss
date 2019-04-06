@@ -1,0 +1,89 @@
+.rtl.home {
+
+    .wrapper {
+
+        header {
+            left: auto;
+            right: 0;
+
+            .search {
+
+                input {
+                    left: auto;
+                    right: 30px;
+                }
+
+                button {
+                    right: auto;
+                    left: 36px;
+                }
+            }
+
+            .menu {
+                right: auto;
+                left: 36px;
+            }
+        }
+
+        .categories {
+
+            ul {
+
+                li {
+                    &.cat-1 {
+                        left: auto;
+                        right: 0;
+                    }
+
+                    &.cat-2 {
+                        left: auto;
+                        right: 50%;
+                    }
+
+                    &.cat-3 {
+                        left: auto;
+                        right: 0;
+                    }
+
+                    &.cat-4 {
+                        left: auto;
+                        right: 50%;
+                    }
+
+                    &.cat-5 {
+                        left: auto;
+                        right: 0;
+                    }
+
+                    &.cat-6 {
+                        left: auto;
+                        right: 50%;
+                    }
+
+                    a {
+                        left: auto;
+                        right: 50%;
+                        transform: translateY(-50%) translateX(50%);
+
+                        span.text {
+                            right: 50%;
+                            left: auto;
+                            transform: translateX(50%) translateY(56px);
+                        }
+
+                        span.icon {
+                            right: 50%;
+                            left: auto;
+                            left: auto;
+                            transform: translateY(-50%) translateX(50%);
+
+                            svg {
+                                transform: scale(1.12);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

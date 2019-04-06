@@ -1,0 +1,64 @@
+.disclaimer {
+    font-size: 0.9em;
+    color: white;
+    background-color: $nlapp_dark;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    padding: 0 16px;
+    border-top: 1px solid #abd4fc;
+    box-shadow: 0 -4px 18px #b9ddff;
+    visibility: hidden;
+    opacity: 0;
+    transition: all 1.0s;
+
+    .container {
+        position: relative;
+        width: 100%;
+        height: auto;
+        text-align: left;
+
+        header {
+            width: 100%;
+
+            h3 {
+                color: white;
+                font-weight: 800;
+                margin-bottom: 6px;
+            }
+
+            .close-disclaimer {
+                float: right;
+                width: 48px;
+                height: 48px;
+                cursor: pointer;
+                background-image: url(../img/close_light.svg);
+                background-size: auto;
+                background-repeat: no-repeat;
+                background-position: center center;
+                transform: translateY(-25%) translateX(25%);
+            }
+        }
+
+        .content {
+            position: relative;
+            overflow: auto;
+            max-height: 280px;
+            padding-bottom: 16px;
+
+            h4 {
+                color: white;
+                font-weight: 600;
+                text-decoration: underline;
+                margin-bottom: 6px;
+            }
+        }
+    }
+}
+
+.step2 .disclaimer.active {
+    visibility: visible;
+    opacity: 1;
+}

@@ -1,0 +1,47 @@
+.rtl.detail.kaart {
+
+    .wrapper {
+
+        main {
+
+            article {
+
+                .iframe-wrapper {
+                    float: right;
+                    left: auto;
+                    right: 0;
+
+                    iframe {
+                        right: 0;
+                        left: auto;
+                    }
+                }
+
+                .share {
+                    padding: 20px 40px 20px 0;
+                    float: right;
+
+                    .shareicon {
+                        right: 4px;
+                        left: auto;
+                    }
+
+                    .doneicon {
+                        right: 4px;
+                        left: auto;
+                    }
+
+                    .sharetext {
+                        right: 40px;
+                        left: auto;
+                    }
+
+                    .donetext {
+                        right: 40px;
+                        left: auto;
+                    }
+                }
+            }
+        }
+    }
+}

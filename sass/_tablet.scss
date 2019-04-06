@@ -1,0 +1,267 @@
+@media #{$tablet} {
+
+    .welcome {
+        .wrapper {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+    }
+
+    .home .wrapper {
+
+        #header_light, #header_dark {
+            height: 150px;
+        }
+
+        .categories {
+            top: 140px;
+            height: calc(100% - 140px);
+
+            ul li {
+                height: 200px;
+
+                a span {
+
+                    &.icon {
+                        width: 140px;
+                        height: 140px;
+                    }
+
+                    &.text {
+                        left: 50%;
+                        top: calc(50% - 4px);
+                        font-size: 1.1em;
+                    }
+                }
+            }
+        }
+    }
+
+    .wrapper header {
+
+        .search {
+
+            input {
+                font-size: 18px;
+                height: 50px;
+            }
+
+            .submit, .icon {
+                top: 34px;
+            }
+
+            button {
+                top: 34px;
+            }
+        }
+
+        .menu {
+            top: 34px;
+        }
+    }
+
+    .home .wrapper header {
+
+        .search {
+
+            input {
+                font-size: 18px;
+                height: 50px;
+            }
+
+            .submit, .icon {
+                top: 34px;
+            }
+
+            button {
+                top: 34px;
+            }
+        }
+
+        .menu {
+            top: 34px;
+        }
+    }
+
+    .settings {
+        max-width: 450px;
+
+        .content ul li {
+            a {
+                font-size: 1.2em;
+            }
+        }
+
+        &.active {
+            left: calc(100% - 450px);
+        }
+
+        .popup {
+            width: 320px;
+            left: 50%;
+            transform: translateX(-50%) translateY(-50%);
+
+            a {
+                font-size: 1.2em;
+            }
+        }
+
+        .logos {
+            .logo {
+                width: 160px;
+                height: 120px;
+            }
+        }
+
+        #pwaContent {
+            margin-top: 30px;
+        }
+    }
+
+    .list, .detail {
+        main {
+            padding: 200px 64px 0;
+        }
+    }
+
+    .list .topics {
+        padding-top: 0;
+    }
+
+    .searchresults {
+        .content {
+            padding: 200px 20px 20px 20px;
+        }
+    }
+
+    .list, .detail, .searchresults {
+
+        #header_light, #header_dark {
+            height: 150px;
+        }
+
+        .related, .links {
+            float: left;
+            display: block;
+            width: 50%;
+        }
+
+        header .category {
+            font-size: 1.6em;
+        }
+
+        .chapter .content p, .chapter .content ul li {
+            font-size: 1.2em;
+            line-height: 1.6em;
+        }
+
+        .chapter .content ul li li, .chapter .content ul li li li {
+            font-size: 1.0em;
+        }
+
+        .chapter .content .share {
+            .sharetext, .donetext {
+                font-size: 1.2em;
+            }
+        }
+
+        .content .results .result .result-content {
+            height: 1.8em;
+        }
+
+        .results .result .cat {
+            padding: 0 0 0 40px;
+
+            &:before {
+                width: 32px;
+                height: 32px;
+            }
+        }
+    }
+
+    .detail.kaart {
+        .wrapper {
+            main {
+                height: calc(100vh - 200px);
+
+                article {
+                    height: calc(100vh - 150px);
+
+                    .iframe-wrapper {
+                        height: calc(100% - 182px);
+
+                        iframe {
+                            height: 100%;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .searchresults .results .result {
+
+        p {
+            font-size: 1.2em;
+        }
+
+        .cat {
+            font-size: 1em;
+        }
+    }
+
+    p {
+        font-size: 1.2em;
+    }
+
+    ul li, ol li {
+        font-size: 1.2em;
+    }
+
+    h1 {
+        font-size: 1.8em;
+    }
+
+    h2 {
+        font-size: 1.4em;
+    }
+
+    h3 {
+        font-size: 1.2em;
+    }
+}
+
+@media #{$tablet-resized} {
+
+    .home .wrapper .categories {
+
+        ul li {
+            min-height: 200px;
+            line-height: 1.0em;
+
+            &.cat-1 {
+                top: 16px;
+            }
+
+            &.cat-2 {
+                top: 16px;
+            }
+
+            &.cat-3 {
+                top: 226px;
+            }
+
+            &.cat-4 {
+                top: 226px;
+            }
+
+            &.cat-5 {
+                top: 436px;
+            }
+
+            &.cat-6 {
+                top: 436px;
+            }
+        }
+    }
+}

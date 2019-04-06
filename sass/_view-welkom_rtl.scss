@@ -1,0 +1,79 @@
+.rtl.welkom {
+    .wrapper {
+        .back {
+            left: auto;
+            right: 20px;
+            background-image: url(../img/forward.svg);
+        }
+
+        #town {
+            .content {
+                .lang {
+
+                    a.btn {
+                        text-align: right;
+
+                        &:before {
+                            left: auto;
+                            right: 0;
+                        }
+
+                        &:after {
+                            right: auto;
+                            left: 0;
+                            background-image: url(../img/left.svg);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    &.step2 {
+
+        #language {
+            right: -100%;
+
+            .content {
+
+                button {
+                    margin-right: -100px;
+
+                    &.active {
+                        margin-right: 0;
+                    }
+                }
+            }
+        }
+
+        #town {
+            left: auto;
+            right: 0;
+        }
+
+
+        &.step3 {
+
+            #town {
+                left: auto;
+                right: -100%;
+
+                .content {
+
+                    .lang {
+
+                        a.btn {
+                            margin-left: auto;
+                            margin-right: -100px;
+
+                            &.active {
+                                margin-left: auto;
+                                margin-right: 0;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

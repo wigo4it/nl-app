@@ -1,0 +1,45 @@
+@media #{$tablet} {
+    .rtl {
+        .welcome {
+            .wrapper {
+                left: auto;
+                right: 50%;
+            }
+        }
+
+        .home .wrapper .categories ul li a span {
+
+            &.text {
+                left: auto;
+                right: 50%;
+            }
+        }
+
+        .settings {
+
+            &.active {
+                left: auto;
+                right: calc(100% - 450px);
+            }
+
+            .popup {
+                left: auto;
+                right: 50%;
+            }
+        }
+
+        &.list, &.detail, &.searchresults {
+
+            .related, .links {
+                float: right;
+            }
+        }
+
+
+        &.list, &.detail {
+            main {
+                padding: 200px 64px 0;
+            }
+        }
+    }
+}

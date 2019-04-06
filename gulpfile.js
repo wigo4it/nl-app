@@ -1,4 +1,4 @@
-/// <binding AfterBuild='default' Clean='clean' ProjectOpened='watch, sass:watch, ts:watch' />
+/// <binding AfterBuild='default' Clean='clean' />
 "use strict";
 
 var gulp = require("gulp"),

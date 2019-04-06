@@ -1,0 +1,48 @@
+.rtl {
+
+    &.list, &.detail, &.searchresults {
+
+        header {
+            left: auto;
+            right: 0;
+
+            .back {
+                left: auto;
+                right: 26px;
+                background-image: url(../img/forward_light.svg);
+            }
+
+            .category {
+            }
+
+            .search {
+
+                button {
+                    right: auto;
+                    left: 26px;
+                }
+
+                .icon {
+                    right: auto;
+                    left: 26px;
+                    transform: rotateY(180deg);
+
+                    &:before {
+                        left: auto;
+                        right: 0;
+                    }
+                }
+
+                input {
+                    right: auto;
+                    left: 30px;
+
+                    &:focus {
+                        left: auto;
+                        right: 30px;
+                    }
+                }
+            }
+        }
+    }
+}
