@@ -174,5 +174,5 @@ NL-app is tot stand gekomen vanuit een samenwerking tussen Gemeente Amsterdam, V
 
 ## Licentie (Licence)
 
-Licensed under the EUPL. This project is licensed under the MIT License - see the [LICENSE.md](◄LICENSE.md) file for details.
+Licensed under the EUPL. This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
 > Copyright © Wigo4it 2019.
