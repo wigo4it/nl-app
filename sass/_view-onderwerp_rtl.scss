@@ -1,0 +1,103 @@
+.rtl.detail {
+
+    main {
+        padding: 140px 16px 24px 16px;
+    }
+
+    .intro h1 {
+        text-align: right;
+    }
+
+    .chapter {
+
+        .clickarea {
+            left: auto;
+            right: 0;
+        }
+
+        h2 {
+            left: auto;
+            right: 0;
+        }
+
+        .content {
+            .related {
+                ul {
+                    li {
+                        &:before {
+                            left: auto;
+                            right: 0;
+                        }
+
+                        a {
+                            padding: 10px 40px 10px 0;
+                        }
+                    }
+                }
+            }
+
+            .links {
+                ul {
+                    li {
+
+                        &.pdf {
+                            background-position-x: 100%;
+                        }
+
+                        &.video {
+                            background-position-x: 100%;
+                        }
+
+                        &.website {
+                            background-position-x: 100%;
+                        }
+
+                        a {
+                            padding: 10px 40px 10px 0;
+                        }
+                    }
+                }
+            }
+
+            .share {
+
+                .shareicon {
+                    left: auto;
+                    right: 4px;
+                }
+
+                .doneicon {
+                    left: auto;
+                    right: 4px;
+                }
+
+                .sharetext {
+                    left: auto;
+                    right: 40px;
+                }
+
+                .donetext {
+                    left: auto;
+                    right: 40px;
+                }
+            }
+        }
+
+        .icon {
+            right: auto;
+            left: 0;
+            transform: rotate(180deg);
+
+            svg {
+                transform: translateX(-50%) translateY(-50%);
+            }
+        }
+
+        &.active {
+
+            .icon {
+                transform: rotate(90deg);
+            }
+        }
+    }
+}

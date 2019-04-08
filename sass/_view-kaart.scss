@@ -1,0 +1,163 @@
+.detail.kaart {
+
+    .wrapper {
+        min-height: 400px;
+        height: 100vh;
+
+        main {
+            height: calc(100vh - 124px);
+            transition: none;
+
+            article {
+                height: calc(100vh - 150px);
+
+                .iframe-wrapper {
+                    position: relative;
+                    float: left;
+                    left: 0;
+                    height: calc(100% - 120px);
+                    width: 100%;
+                    min-height: 264px;
+
+                    iframe {
+                        opacity: 0;
+                        position: absolute;
+                        width: 100%;
+                        height: 100%;
+                        left: 0;
+                        top: 0;
+                        border: 3px solid $nlapp_light;
+                        transition: opacity 1.0s;
+                    }
+
+                    &.cat-1 iframe {
+                        border-color: category_color_light(1);
+                    }
+
+                    &.cat-2 iframe {
+                        border-color: category_color_light(2);
+                    }
+
+                    &.cat-3 iframe {
+                        border-color: category_color_light(3);
+                    }
+
+                    &.cat-4 iframe {
+                        border-color: category_color_light(4);
+                    }
+
+                    &.cat-5 iframe {
+                        border-color: category_color_light(5);
+                    }
+
+                    &.cat-6 iframe {
+                        border-color: category_color_light(6);
+                    }
+
+                    .offline-content {
+                        visibility: hidden;
+                        padding: 48px;
+
+                        span {
+                            vertical-align: top;
+                        }
+                    }
+                }
+
+                .share {
+                    margin-top: 8px;
+                    padding: 20px 0 20px 40px;
+                    position: relative;
+                    float: left;
+                    font-weight: 300;
+
+                    .shareicon {
+                        position: absolute;
+                        left: 4px;
+                        top: 50%;
+                        width: 24px;
+                        height: 24px;
+                        opacity: 1;
+                        transform: translateY(-50%);
+                        transition: all .4s;
+                    }
+
+                    .doneicon {
+                        position: absolute;
+                        left: 4px;
+                        top: 50%;
+                        width: 24px;
+                        height: 24px;
+                        opacity: 0;
+                        transform: translateY(-50%);
+                        transition: all .4s;
+                    }
+
+                    .sharetext {
+                        position: absolute;
+                        left: 40px;
+                        top: 50%;
+                        opacity: 1;
+                        transform: translateY(-50%);
+                        transition: all .4s;
+                        display: block;
+                        width: 320px;
+                        color: $link;
+                    }
+
+                    .donetext {
+                        position: absolute;
+                        left: 40px;
+                        top: 50%;
+                        opacity: 0;
+                        transform: translateY(-50%);
+                        transition: all .4s;
+                        display: block;
+                        width: 320px;
+                        color: $link_visited;
+                    }
+
+                    &.active {
+                        .shareicon {
+                            opacity: 0;
+                        }
+
+                        .doneicon {
+                            opacity: 1;
+                        }
+
+                        .sharetext {
+                            opacity: 0;
+                        }
+
+                        .donetext {
+                            opacity: 1;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    &.loaded {
+        .wrapper main article .iframe-wrapper {
+            iframe {
+                opacity: 1;
+            }
+        }
+    }
+}
+
+.offline.detail.kaart {
+    .wrapper {
+        main {
+            article {
+                .iframe-wrapper {
+                    .offline-content {
+                        visibility: visible;
+                    }
+                }
+            }
+        }
+    }
+}

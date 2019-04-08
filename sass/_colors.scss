@@ -1,0 +1,32 @@
+// NL App colors
+$black: #000;
+$white: #fff;
+
+$gray-50: #FAFAFA;
+$gray-100: #F5F5F5;
+$gray-200: #EEEEEE;
+$gray-300: #E0E0E0;
+$gray-400: #BDBDBD;
+$gray-500: #9E9E9E;
+$gray-600: #757575;
+$gray-700: #616161;
+$gray-800: #424242;
+$gray-900: #212121;
+
+$link: #2186E3;
+$link_visited: #AC2FA7;
+
+$nlapp_dark: #1565C0;
+$nlapp_light: #2196F3;
+
+// Category colors
+$category_color_dark: #045d56 #147954 #BF9B33 #BF4E43 #8546BF #55A6BF;
+$category_color_light: #07A99D #1Eb980 #FFCF44 #FF6859 #B15DFF #72DEFF;
+
+@function category_color_dark($num){
+    @return nth($category_color_dark, $num)
+}
+
+@function category_color_light($num) {
+    @return nth($category_color_light, $num)
+}

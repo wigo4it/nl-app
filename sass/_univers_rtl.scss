@@ -1,0 +1,31 @@
+body.rtl {
+    * {
+        direction: rtl;
+        text-align: right;
+    }
+}
+
+.rtl {
+    &.list, &.detail {
+        main {
+            padding: 200px 100px 0 0;
+        }
+    }
+
+    .wrapper {
+        text-align: right;
+    }
+
+    .up {
+        float: right;
+
+        &.active {
+
+            &:after {
+                left: 0;
+                right: auto;
+            }
+        }
+    }
+}
+

@@ -1,0 +1,45 @@
+@media #{$laptop} {
+    .rtl {
+
+        &.list .wrapper, &.detail .wrapper, &.searchresults .wrapper {
+
+            .categories {
+                left: auto;
+                right: 50%;
+            }
+        }
+
+        &.home .wrapper, &.list.searching .wrapper, &.detail.searching .wrapper {
+
+            header {
+
+                .search {
+
+                    input {
+                        left: auto;
+                        right: 50%;
+                        transform: translateX(50%);
+
+                        &:focus + button {
+                            left: auto;
+                            right: calc(50% + 432px);
+                        }
+                    }
+                }
+            }
+        }
+
+        .settings {
+
+            &.active {
+                left: auto;
+                right: calc(100% - 450px);
+            }
+
+            .popup {
+                left: auto;
+                right: 50%;
+            }
+        }
+    }
+}

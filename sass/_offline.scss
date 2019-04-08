@@ -1,0 +1,114 @@
+﻿.offline-ui, .offline-ui *, .offline-ui:before, .offline-ui:after, .offline-ui *:before, .offline-ui *:after {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.offline-ui {
+    display: none;
+    position: fixed;
+    background: white;
+    z-index: 2000;
+    display: inline-block;
+}
+
+.offline-ui .offline-ui-retry {
+    display: none;
+}
+
+.offline-ui.offline-ui-up {
+    display: block;
+}
+
+.offline-ui.offline-ui-down {
+    display: block;
+}
+
+.offline-ui {
+    bottom: 0;
+    left: 0;
+    padding: 10px 8px;
+    background: transparent;
+}
+
+.offline-ui .offline-ui-content {
+    padding-left: 16px;
+}
+
+.offline-ui .offline-ui-content:after {
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    border-radius: 50%;
+    content: " ";
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 1px;
+    left: 8px;
+    margin: auto;
+    height: 9px;
+    width: 9px;
+}
+
+.offline-ui.offline-ui-up .offline-ui-content:after {
+    background: #80d580;
+}
+
+.offline-ui.offline-ui-down .offline-ui-content:after {
+    background: #ec8787;
+}
+
+.offline-ui.offline-ui-down.offline-ui-connecting .offline-ui-content:after {
+    background: orange;
+}
+
+// Offline box Content
+.offline-ui .offline-ui-retry:before {
+//    content: "Reconnect";
+}
+
+.offline-ui.offline-ui-up .offline-ui-content:before {
+//    content: "Your computer is connected to the internet.";
+}
+
+.offline-ui.offline-ui-down .offline-ui-content:before {
+//    content: "Your computer lost its internet connection.";
+}
+
+.offline-ui.offline-ui-down.offline-ui-connecting .offline-ui-content:before, .offline-ui.offline-ui-down.offline-ui-connecting-2s .offline-ui-content:before {
+//    content: "Attempting to reconnect...";
+}
+
+.offline-ui.offline-ui-down.offline-ui-waiting .offline-ui-content[data-retry-in-unit="second"]:before {
+//    content: "Connection lost. Reconnecting in " attr(data-retry-in-value) " seconds...";
+}
+
+.offline-ui.offline-ui-down.offline-ui-waiting .offline-ui-content[data-retry-in-unit="second"][data-retry-in-value="1"]:before {
+//    content: "Connection lost. Reconnecting in " attr(data-retry-in-value) " second...";
+}
+
+.offline-ui.offline-ui-down.offline-ui-waiting .offline-ui-content[data-retry-in-unit="minute"]:before {
+//    content: "Connection lost. Reconnecting in " attr(data-retry-in-value) " minutes...";
+}
+
+.offline-ui.offline-ui-down.offline-ui-waiting .offline-ui-content[data-retry-in-unit="minute"][data-retry-in-value="1"]:before {
+//    content: "Connection lost. Reconnecting in " attr(data-retry-in-value) " minute...";
+}
+
+.offline-ui.offline-ui-down.offline-ui-waiting .offline-ui-content[data-retry-in-unit="hour"]:before {
+//    content: "Connection lost. Reconnecting in " attr(data-retry-in-value) " hours...";
+}
+
+.offline-ui.offline-ui-down.offline-ui-waiting .offline-ui-content[data-retry-in-unit="hour"][data-retry-in-value="1"]:before {
+//    content: "Connection lost. Reconnecting in " attr(data-retry-in-value) " hour...";
+}
+
+.offline-ui.offline-ui-down.offline-ui-reconnect-failed-2s.offline-ui-waiting .offline-ui-retry {
+    display: none;
+}
+
+.offline-ui.offline-ui-down.offline-ui-reconnect-failed-2s .offline-ui-content:before {
+//    content: "Connection attempt failed.";
+}

@@ -1,0 +1,103 @@
+.rtl {
+    .settings {
+        left: auto;
+        right: 100%;
+
+        .content, #pwaContent {
+            left: auto;
+            right: 50%;
+            transform: translateX(50%);
+            text-align: right;
+            right: calc(50% - 18px);
+            float: right;
+
+            h2 {
+                float: right;
+            }
+
+            ul {
+                float: right;
+
+                li {
+                    float: right;
+
+                    a {
+                        float: right;
+                        padding: 20px 40px 20px 0;
+                        background-position: center right;
+
+                        &:after {
+                            right: auto;
+                            left: 0;
+                            background-image: url(../img/left.svg);
+                        }
+                    }
+                }
+            }
+        }
+
+        &.active {
+            left: auto;
+            right: calc(15% + 36px);
+        }
+
+
+        .popup {
+            left: auto;
+            right: 20px;
+            text-align: right;
+
+            ul {
+                float: right;
+
+                li {
+                    float: right;
+
+                    a {
+                        float: right;
+                        padding: 14px 50px 14px 0;
+
+
+                        &:before {
+                            left: auto;
+                            right: 0;
+                        }
+                    }
+                }
+            }
+
+            .close {
+                right: auto;
+                left: 0;
+            }
+        }
+
+        .menu {
+            right: auto;
+            left: 48px;
+        }
+
+        .logos {
+            left: auto;
+            right: calc(50% - 18px);
+            transform: translateX(50%);
+            float: right;
+
+            .logo {
+                left: auto;
+                right: 50%;
+                transform: translateY(-50%) translateX(50%);
+
+                &:nth-child(2) {
+                    left: auto;
+                    right: calc(50% + 32px);
+                }
+            }
+        }
+
+        .popupbg {
+            left: auto;
+            right: 0;
+        }
+    }
+}
