@@ -970,7 +970,7 @@
     <!-- Generates the transformed Web.config in the intermediate directory -->
     <TransformXml Source="Web.config" Destination="$(IntermediateOutputPath)Web.config" Transform="Web.$(Configuration).config" Condition="exists('Web.$(Configuration).config')" />
     <!-- Overwrites the original Web.config with the transformed configuration file -->
-    <Copy SourceFiles="$(IntermediateOutputPath)Web.config" DestinationFolder="$(ProjectDir)" />
+    <Copy SourceFiles="$(IntermediateOutputPath)Web.config" DestinationFolder="$(ProjectDir)" Condition="exists('Web.$(Configuration).config')" />
     <!--\$(OutputPath)\-->
   </Target>
   <Import Project="..\packages\Microsoft.TypeScript.MSBuild.2.9.2\build\Microsoft.TypeScript.MSBuild.targets" Condition="Exists('..\packages\Microsoft.TypeScript.MSBuild.2.9.2\build\Microsoft.TypeScript.MSBuild.targets')" />
