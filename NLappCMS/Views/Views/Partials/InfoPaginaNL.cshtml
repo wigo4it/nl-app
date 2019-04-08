@@ -1,0 +1,116 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage<NLappCMS.Models.InfoPaginaNL>
+@using System.Web.Configuration
+@using NLappCMS.Models;
+
+@{
+    var missendeInhoud = Umbraco.GetDictionaryValue("Missende inhoud");
+
+    var titel = Model.Content.Translated != null ? Model.Content.Translated.Titel : string.Empty;
+    if (string.IsNullOrWhiteSpace(titel))
+    {
+        titel = "<" + missendeInhoud + ">";
+    }
+
+    var replaceEmptyContent = WebConfigurationManager.AppSettings["nlapp-replace-empty-content_informationpage"] == "true";
+    var omschrijving = Model.Content.Translated != null ? Model.Content.Translated.Omschrijving : null;
+    if (omschrijving == null || string.IsNullOrWhiteSpace(omschrijving.ToString()))
+    {
+        omschrijving = new HtmlString(replaceEmptyContent ? "<p class='missing-content'>" + missendeInhoud + "</p>" : "");
+    }
+
+    var extLinks = Model.Content.TranslatedLinks;
+
+    Func<IPublishedContent, string> GetTitle = (link) =>
+    {
+        var contentType = link.ContentType.Alias.ToLower();
+
+        switch (contentType)
+        {
+            case DocumentTypes.InfoPagina:
+                return (link as InfoPagina).Translated == null ? missendeInhoud : (link as InfoPagina).Translated.Titel;
+
+            case DocumentTypes.KaartPagina:
+                return (link as KaartPagina).TranslatedTitel ?? missendeInhoud;
+
+            default:
+                return (link as InfoPaginaNL).Translated == null ? missendeInhoud : (link as InfoPaginaNL).Translated.Titel;
+        }
+    };
+}
+
+<div class="chapter" aria-label="@Umbraco.GetDictionaryValue("Hoofdstuk") @titel"
+     data-id="@Model.Content.Id" data-name="@Model.Content.Name" data-url="@Model.Content.UrlWithDomain()">
+
+    <div class="clickarea" tabindex="-1"></div>
+
+    <span class="icon">
+        @Html.Raw(System.IO.File.ReadAllText(Server.MapPath("~/img/arrowright.svg")))
+    </span>
+
+    <h2 tabindex="0">@titel</h2>
+
+    <div class="content">
+        @Html.Partial("ContentBlock", omschrijving)
+
+        @*share*@
+        <a href="#" class="share" data-url="@Umbraco.NiceUrlWithDomain(Model.Content.Id)" data-title="@titel"
+           role="button" aria-label="@Umbraco.GetDictionaryValue("ShareLink")" tabindex="-1">
+            @Html.Raw(System.IO.File.ReadAllText(Server.MapPath("~/img/share.svg")))
+            @Html.Raw(System.IO.File.ReadAllText(Server.MapPath("~/img/done.svg")))
+
+            <span class="sharetext">@Umbraco.GetDictionaryValue("ShareLink")</span>
+            <span class="donetext">@Umbraco.GetDictionaryValue("ShareLinkCopied")</span>
+        </a>
+
+        @if (Model.Content.GerelateerdeContentMulti.Any())
+        {
+        @*gerelateerd*@
+        <aside id="related-@Model.Content.Id" aria-label="@Umbraco.GetDictionaryValue("Gerelateerd")" role="list">
+            <div class="related">
+                <h3>@Umbraco.GetDictionaryValue("Gerelateerd")</h3>
+                <nav role="navigation">
+                    <ul role="list">
+                        @foreach (var link in Model.Content.GerelateerdeContentMulti)
+                        {
+                        <li class="cat-@(link.Parent.Parent.SortOrder + 1)" role="listitem">
+                            <a tabindex="-1" target="_self" href="@link.Url?from=@Model.Content.Url"
+                               aria-label="@Umbraco.GetDictionaryValue("OpenPagina")">
+                                @GetTitle(link)
+                            </a>
+                        </li>
+                        }
+                    </ul>
+                </nav>
+            </div>
+        </aside>
+        }
+
+        @if (extLinks.Any())
+        {
+            @*externe links*@
+            <aside id="links-@Model.Content.Id" aria-label="@Umbraco.GetDictionaryValue("Links")" role="list">
+                <div class="links">
+                    <h3>@Umbraco.GetDictionaryValue("Links")</h3>
+                    <ul role="list">
+                    @foreach (var link in extLinks)
+                    {
+                        var linktype = link.LinkType != null ? link.LinkType.ToLower() : "website";
+                        <li class="@linktype" role="listitem">
+                            @{
+                                var linkUrl = link.Url;
+
+                                if (!linkUrl.StartsWith("http"))
+                                {
+                                    linkUrl = "http://" + linkUrl;
+                                }
+                            }
+
+                            <a tabindex="-1" target="_blank" href="@linkUrl" aria-label="@Umbraco.GetDictionaryValue("OpenWebsite")">@link.Name</a>
+                        </li>
+                    }
+                    </ul>
+                </div>
+            </aside>
+        }
+    </div>
+</div>

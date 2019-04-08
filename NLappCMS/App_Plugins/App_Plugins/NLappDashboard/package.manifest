@@ -1,0 +1,9 @@
+﻿{
+  "javascript": [
+    "~/app_plugins/NLappDashboard/js/nlappdashboard.content.js",
+    "~/app_plugins/NLappDashboard/js/nlappdashboard.translations.controller.js"
+  ],
+  "css": [
+    "~/app_plugins/NLappDashboard/css/nlappdashboard.css"
+  ]
+}

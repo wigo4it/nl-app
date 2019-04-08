@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<language alias="nl" intName="Dutch" localName="Nederlands" lcid="19" culture="nl-NL">
+  <creator>
+    <name>Wigo4it</name>
+  </creator>
+  <area alias="legend">
+    <key alias="filled">Gevuld item</key>
+    <key alias="empty">Leeg item</key>
+    <key alias="missing">Missende vertaling</key>
+    <key alias="activate">Inladen pagina's</key>
+  </area>
+</language>

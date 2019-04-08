@@ -1,0 +1,28 @@
+<div ng-controller="Umbraco.Overlays.LinkPickerController as ctrl">
+    <umb-control-group label="@dialogs_linkUrl">
+        <input type="text"
+                localize="placeholder"
+                placeholder="@placeholders_enterLinkUrl"
+                class="umb-editor umb-textstring"
+                ng-model="model.target.url"
+                ng-disabled="model.target.id"
+                focus-when="{{true}} " />
+    </umb-control-group>
+
+    <umb-control-group label="@dialogs_linkName">
+        <input type="text"
+                localize="placeholder"
+                placeholder="@placeholders_enterLinkName"
+                class="umb-editor umb-textstring"
+                ng-model="model.target.name" />
+    </umb-control-group>
+
+    <input type="hidden" ng-model="model.target.target" value="_blank" />
+
+    <umb-control-group label="@dialogs_linkType">
+        <select ng-model="model.target.linktype">
+            <option selected disabled value="" localize="label" label="@placeholders_enterLinkType"></option>
+            <option value="Map">Kaart</option>
+        </select>
+    </umb-control-group>
+</div>

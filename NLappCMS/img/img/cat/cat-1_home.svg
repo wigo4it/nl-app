@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120">
+  <polygon class="light" points="28.8 96 91.2 96 91.2 56 28.8 56 28.8 96"/>
+  <polygon class="dark" points="52.2 96 67.8 96 67.8 72 52.2 72 52.2 96"/>
+  <polygon class="dark" points="60 24 21 56 99 56 60 24"/>
+</svg>

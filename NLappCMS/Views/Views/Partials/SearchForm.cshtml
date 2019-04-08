@@ -1,0 +1,53 @@
+﻿@model UmbracoContext
+
+@using System.Diagnostics
+@using System.Web.Configuration
+@using Umbraco.Web;
+@using ContentModels = NLappCMS.Models;
+
+@{
+    string q;
+    try
+    {
+        q = Request.QueryString["q"];
+    }
+    catch
+    {
+        q = string.Empty;
+    }
+
+    var umbracoHelper = new UmbracoHelper(Model);
+    Debug.Assert(UmbracoContext.Current.HttpContext.Request.Url != null, "UmbracoContext.Current.HttpContext.Request.Url != null");
+    var uri = new Uri(UmbracoContext.Current.HttpContext.Request.Url.ToString());
+
+    string newUrl = null;
+    if (uri.Segments.Length > 2)
+    {
+        var rootId = Int32.Parse(WebConfigurationManager.AppSettings["nlapp-root-id"]);
+        var root = umbracoHelper.TypedContent(rootId);
+
+        var languageIsoCodes = ApplicationContext.Current.Services.LocalizationService.GetAllLanguages().Select(i => i.IsoCode);
+        var townNames = root.Children<ContentModels.Home>().Where(x => x.IsVisible()).Select(i => i.Sitename);
+
+        var languageSegment = uri.Segments[1].TrimEnd("/");
+        var townSegment = uri.Segments[2].TrimEnd("/");
+
+        if (languageIsoCodes.Contains(languageSegment, StringComparer.CurrentCultureIgnoreCase)
+            && townNames.Contains(townSegment, StringComparer.CurrentCultureIgnoreCase))
+        {
+            newUrl = uri.Scheme + "://" + uri.Authority + uri.Segments[0] + uri.Segments[1] + uri.Segments[2];
+            newUrl = newUrl.TrimEnd("/");
+        }
+    }
+}
+
+@if (newUrl != null)
+{
+        <form id="searchform" class="search" role="search" action="@newUrl/search" method="get">
+            <span class="icon"></span>
+            <input type="search" placeholder="@umbracoHelper.GetDictionaryValue("Zoeken")"
+                   aria-label="@umbracoHelper.GetDictionaryValue("ZoekText")"
+                   name="q" value="@q" maxlength="30" />
+            <button name="search" type="submit" disabled tabindex="-1" aria-label="@umbracoHelper.GetDictionaryValue("ZoekenUitvoeren")"></button>
+        </form>
+}

@@ -1,0 +1,166 @@
+﻿@using NLappCMS.Models;
+@using Umbraco.Web;
+
+@model Instellingen
+
+@{
+    var umbracoHelper = new UmbracoHelper(Model.Context);
+    var userLanguageIso = (Request.Cookies["lang"] != null ? Request.Cookies["lang"].Value : string.Empty);
+    var userTown = (Request.Cookies["town"] != null ? Request.Cookies["town"].Value.Replace("%20", " ") : string.Empty);
+    var townHomePages = Model.Root.Children<Home>().Where(x => x.IsVisible());
+    var languages = ApplicationContext.Current.Services.LocalizationService.GetAllLanguages();
+
+    Func<string, string, string> HomeUrl = (language, town) => string.Format("/{0}/{1}", language, town);
+
+    Func<Home, string, string> TownName = (town, language) =>
+    {
+        if (town ==  null || town.TownNamesAll == null)
+        {
+            return string.Empty;
+        }
+        var townByLanguage = town.TownNamesAll.SingleOrDefault(x => x.Key == language).Value;
+
+        if (townByLanguage == null)
+        {
+            return town.TownNamesAll.First().Value.ToString();
+        }
+
+        return townByLanguage.ToString();
+    };
+
+    Func<string, string> LanguageName = (isoCode) =>
+    {
+        var language = @Model.LanguageLabels.FirstOrDefault(x => x.Language.IsoCode.Equals(isoCode));
+        return language == null ? isoCode : language.Value;
+    };
+
+    Func<Home> ActiveTown = () => townHomePages.SingleOrDefault(g => g.Sitename == userTown);
+
+    Func<string> ActiveTownName = () => TownName(ActiveTown(), userLanguageIso);
+
+    Func<string, string> IsLanguageActive = (language) => userLanguageIso == language ? "true" : "false";
+
+    Func<string, string> IsLanguageActiveClass = (language) => userLanguageIso == language ? "active" : string.Empty;
+
+    Func<string, string> IsTownActive = (town) => userTown.Replace("%20", " ") == town ? "true" : "false";
+
+    Func<string, string> IsTownActiveClass = (town) => userTown.Replace("%20", " ") == town ? "active" : string.Empty;
+
+    var activeTown = ActiveTown();
+    if (activeTown == null)
+    {
+        HttpContext.Current.Response.Redirect("/");
+    }
+
+    var logo = activeTown != null ? activeTown.Logo : null;
+    var logoUrl = logo != null ? logo.Url : "/img/logo.svg";
+    var activeClass = Model.Visible ? "active" : string.Empty;
+    }
+
+@if (activeTown != null)
+    {
+
+    <style type="text/css">
+        .active-town {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: #ea7b7b;
+            opacity: 0.8;
+            position: relative;
+            left: @ActiveTown().SplashLocatieX%;
+            top: @ActiveTown().SplashLocatieY%;
+        }
+    </style>
+}
+
+<div class="settings @activeClass" role="dialog" tabindex="-1" aria-hidden="true" aria-label="@umbracoHelper.GetDictionaryValue("Instellingen")">
+    <div class="content">
+        <h2>@umbracoHelper.GetDictionaryValue("InstellingenHeader")</h2>
+        <ul>
+            <li>
+                <a id="language" class="language" href="#" role="button"
+                   aria-label="@umbracoHelper.GetDictionaryValue("ActieveTaal")"
+                   aria-expanded="false" aria-haspopup="true">
+                    @LanguageName(userLanguageIso)
+                </a>
+            </li>
+            <li>
+                <a id="town" class="town" href="#" role="button"
+                   aria-label="@umbracoHelper.GetDictionaryValue("ActieveGemeente")"
+                   aria-expanded="false" aria-haspopup="true">
+                    @ActiveTownName()
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <div id="pwaContent">
+        <h2>@umbracoHelper.GetDictionaryValue("PWAHeader")</h2>
+        <ul>
+            <li>
+                <a id="installPwa" class="pwa" href="#" role="button" aria-label="@umbracoHelper.GetDictionaryValue("PWAInstallActie")">
+                    @umbracoHelper.GetDictionaryValue("PWAInstallButton")
+                </a>
+                <a id="installedPwa" class="pwa-installed" role="status" aria-label="@umbracoHelper.GetDictionaryValue("PWAIsInstalled")">
+                    <span>@umbracoHelper.GetDictionaryValue("PWAIsInstalled")</span>
+                </a>
+            </li>
+            <li>
+                <a class="pwa-installed status-online"><span>@umbracoHelper.GetDictionaryValue("ConnectionOnline")</span></a>
+                <a class="pwa-installed pwa status-offline"><span>@umbracoHelper.GetDictionaryValue("ConnectionOffline")</span></a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="logos" aria-hidden="true">
+        <div class="logo town">
+            <img src="@logoUrl" alt="">
+        </div>
+    </div>
+
+    <div class="menu" role="button" aria-label="@umbracoHelper.GetDictionaryValue("SluitenPopup")"></div>
+
+    <div id="popupbg" class="popupbg"></div>
+
+    <div class="popup language" role="listbox" aria-label="@umbracoHelper.GetDictionaryValue("SelecteerTaal")">
+        <ul>
+            @foreach (var language in languages.OrderBy(t => t.IsoCode.ToLower() == "nl-nl" ? 1 : 2))
+            {
+                <li>
+                    <a href="@HomeUrl(language.IsoCode, userTown)"
+                       class="@IsLanguageActiveClass(language.IsoCode)"
+                       data-language="@language.IsoCode"
+                       role="option"
+                       aria-activedescendant="@IsLanguageActive(language.IsoCode)"
+                       aria-selected="@IsLanguageActive(language.IsoCode)">
+                        @LanguageName(language.IsoCode)
+                    </a>
+                </li>
+            }
+        </ul>
+
+        <div class="close" aria-label="@umbracoHelper.GetDictionaryValue("Sluiten")" role="button"></div>
+    </div>
+
+    <div class="popup town" role="listbox" aria-label="@umbracoHelper.GetDictionaryValue("SelecteerGemeente")">
+        <ul>
+            @foreach (var town in townHomePages.OrderBy(c => c.Name))
+            {
+                <li>
+                    <a href="@HomeUrl(userLanguageIso, town.Name.Replace(" ", "-"))"
+                       class="@IsTownActiveClass(town.Name)"
+                       data-town="@town.Name"
+                       role="option"
+                       aria-activedescendant="@IsTownActive(town.Name)"
+                       aria-selected="@IsTownActive(town.Name)">
+                        @TownName(town, userLanguageIso)
+                    </a>
+                </li>
+            }
+        </ul>
+
+        <div class="close" role="button" aria-label="@umbracoHelper.GetDictionaryValue("Sluiten")"></div>
+    </div>
+</div>
+

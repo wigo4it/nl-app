@@ -1,0 +1,13 @@
+﻿@using ClientDependency.Core
+@using NLappCMS.Models
+@using Our.Umbraco.Vorto.Extensions
+@inherits Umbraco.Web.Mvc.UmbracoTemplatePage<NLappCMS.Models.InfoPaginaNL>
+
+@{
+    Layout = "MasterNLapp.cshtml";
+}
+
+<section>
+    @Html.Partial("InfoPaginaNL", Model);
+</section>
+                

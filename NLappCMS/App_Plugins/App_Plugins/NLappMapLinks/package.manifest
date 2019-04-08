@@ -1,0 +1,28 @@
+﻿{
+  "propertyEditors": [
+    {
+      "alias": "NLapp.MapLinksEditor",
+      "name": "Map Links",
+      "icon": "icon-link",
+      "group": "pickers",
+      "editor": {
+        "view": "~/App_Plugins/NLappMapLinks/NLappMapLinksEditor.html"
+      },
+      "prevalues": {
+        "fields": [
+          {
+            "label": "Max item count",
+            "description": "Maximum number of maps allowed",
+            "key": "maplinksMax",
+            "view": "number"
+          }
+        ]
+      }
+    }
+  ],
+  "javascript": [
+    "~/App_Plugins/NLappMapLinks/js/nlappMaplinks.editor.controller.js"
+  ],
+  "css": [
+  ]
+}

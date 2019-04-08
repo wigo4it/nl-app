@@ -1,0 +1,10 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage<NLappCMS.Models.InfoPaginaLink>
+
+@{
+    var pagina = Model.Content.InhoudKiezer.FirstOrDefault();
+}
+
+@if (pagina != null)
+{
+    @Html.Partial("InfoPagina", pagina);
+}
