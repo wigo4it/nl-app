@@ -68,6 +68,7 @@ Er wordt gebruik gemaakt van de volgende technology-stack:
 - C#
 - Umbraco (v7.10.0)
 - SQL server (2008 en hoger)
+- log4net
 - TypeScript (v2.9.2) & JavaScript
 - Html5
 - Css & Sass
@@ -173,5 +174,5 @@ NL-app is tot stand gekomen vanuit een samenwerking tussen Gemeente Amsterdam, V
 
 ## Licentie (Licence)
 
-Licensed under the EUPL. This project is licensed under the MIT License - see the [LICENSE.md](◄LICENSE.md) file for details.
+Licensed under the EUPL. This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
 > Copyright © Wigo4it 2019.
