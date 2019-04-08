@@ -172,7 +172,7 @@ NL-app is tot stand gekomen vanuit een samenwerking tussen Gemeente Amsterdam, V
 > Contact: [beheer.nl-app@wigo4it.nl]([mailto:beheer.nl-app@wigo4it.nl]).
 
 
-## Licentie (Licence)
+## Licentie (License)
 
 Licensed under the EUPL. This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
 > Copyright © Wigo4it 2019.

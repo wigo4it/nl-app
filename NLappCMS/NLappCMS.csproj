@@ -455,9 +455,6 @@
       <DependentUpon>nlapp.css</DependentUpon>
     </Content>
     <Content Include="default.aspx" />
-    <Content Include="demo\DemoDataScripts\01_NLApp_CreateDatabase.sql" />
-    <Content Include="demo\DemoDataScripts\02_NLApp_CreateTables.sql" />
-    <Content Include="demo\DemoDataScripts\03_NLApp_DefaultData.sql" />
     <Content Include="Error.html" />
     <Content Include="Global.asax" />
     <Content Include="gulpfile.js" />
@@ -577,40 +574,10 @@
     <Content Include="Connected Services\Application Insights\ConnectedService.json" />
     <Content Include="App_Plugins\DiploTraceLogViewer\package.manifest" />
     <Content Include="App_Plugins\NLappMapLinks\package.manifest" />
-    <Content Include="licence.md" />
-    <Content Include="demo\CreateDemoData.ps1" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
     <Content Include="robots.txt" />
-    <Content Include="screenshots\l\NLapp Cat Ar.png" />
-    <Content Include="screenshots\l\NLapp Cat.png" />
-    <Content Include="screenshots\l\NLapp Home Ar.png" />
-    <Content Include="screenshots\l\NLapp Home Ti.png" />
-    <Content Include="screenshots\l\NLapp Home.png" />
-    <Content Include="screenshots\l\NLapp Info1.png" />
-    <Content Include="screenshots\l\NLapp Info2.png" />
-    <Content Include="screenshots\l\NLapp Info3.png" />
-    <Content Include="screenshots\l\NLapp Info4.png" />
-    <Content Include="screenshots\l\NLapp Map.png" />
-    <Content Include="screenshots\l\NLapp Map2.png" />
-    <Content Include="screenshots\l\NLapp Welkom.png" />
-    <Content Include="screenshots\l\NLapp Zoek Ti.png" />
-    <Content Include="screenshots\l\NLapp Zoek.png" />
-    <Content Include="screenshots\s\NLapp Cat Ar.png" />
-    <Content Include="screenshots\s\NLapp Cat.png" />
-    <Content Include="screenshots\s\NLapp Home Ar.png" />
-    <Content Include="screenshots\s\NLapp Home Ti.png" />
-    <Content Include="screenshots\s\NLapp Home.png" />
-    <Content Include="screenshots\s\NLapp Info1.png" />
-    <Content Include="screenshots\s\NLapp Info2.png" />
-    <Content Include="screenshots\s\NLapp Info3.png" />
-    <Content Include="screenshots\s\NLapp Info4.png" />
-    <Content Include="screenshots\s\NLapp Map.png" />
-    <Content Include="screenshots\s\NLapp Map2.png" />
-    <Content Include="screenshots\s\NLapp Welkom.png" />
-    <Content Include="screenshots\s\NLapp Zoek Ti.png" />
-    <Content Include="screenshots\s\NLapp Zoek.png" />
     <Content Include="scripts\jquery-3.3.1.min.js" />
     <Content Include="scripts\nlapp-bundle.js" />
     <Content Include="scripts\nlapp.min.js" />
@@ -707,7 +674,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="readme.md" />
     <None Include="Web.DEV.ExampleConfig">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

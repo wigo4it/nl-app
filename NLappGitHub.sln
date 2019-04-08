@@ -1,0 +1,87 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.2015
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NLappCMS", "NLappCMS\NLappCMS.csproj", "{D41AD260-6A47-482E-A6BB-D59FCB7CF38E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{FBDA96DB-066B-4A25-B93A-08D5ADCBD088}"
+	ProjectSection(SolutionItems) = preProject
+		CopyFilesForGithub.ps1 = CopyFilesForGithub.ps1
+		LICENSE.md = LICENSE.md
+		readme.md = readme.md
+		RestoreWebConfig.ps1 = RestoreWebConfig.ps1
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "demo", "demo", "{BB8FA351-E092-49C6-9B10-25FDA8423395}"
+	ProjectSection(SolutionItems) = preProject
+		demo\CreateDemoData.ps1 = demo\CreateDemoData.ps1
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DemoDataScripts", "DemoDataScripts", "{F438AAE7-10BE-4359-A692-F671C0BD99D6}"
+	ProjectSection(SolutionItems) = preProject
+		demo\DemoDataScripts\01_NLApp_CreateDatabase.sql = demo\DemoDataScripts\01_NLApp_CreateDatabase.sql
+		demo\DemoDataScripts\02_NLApp_CreateTables.sql = demo\DemoDataScripts\02_NLApp_CreateTables.sql
+		demo\DemoDataScripts\03_NLApp_DefaultData.sql = demo\DemoDataScripts\03_NLApp_DefaultData.sql
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "screenshots", "screenshots", "{ACB13649-8571-4170-BCB8-8ADDAF036F2A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "l", "l", "{0B490C76-5D36-40BF-9892-35B35FE0BA82}"
+	ProjectSection(SolutionItems) = preProject
+		screenshots\l\NLapp Cat Ar.png = screenshots\l\NLapp Cat Ar.png
+		screenshots\l\NLapp Cat.png = screenshots\l\NLapp Cat.png
+		screenshots\l\NLapp Home Ar.png = screenshots\l\NLapp Home Ar.png
+		screenshots\l\NLapp Home Ti.png = screenshots\l\NLapp Home Ti.png
+		screenshots\l\NLapp Home.png = screenshots\l\NLapp Home.png
+		screenshots\l\NLapp Info1.png = screenshots\l\NLapp Info1.png
+		screenshots\l\NLapp Info2.png = screenshots\l\NLapp Info2.png
+		screenshots\l\NLapp Info3.png = screenshots\l\NLapp Info3.png
+		screenshots\l\NLapp Info4.png = screenshots\l\NLapp Info4.png
+		screenshots\l\NLapp Map.png = screenshots\l\NLapp Map.png
+		screenshots\l\NLapp Map2.png = screenshots\l\NLapp Map2.png
+		screenshots\l\NLapp Welkom.png = screenshots\l\NLapp Welkom.png
+		screenshots\l\NLapp Zoek Ti.png = screenshots\l\NLapp Zoek Ti.png
+		screenshots\l\NLapp Zoek.png = screenshots\l\NLapp Zoek.png
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "s", "s", "{CE5DEF6D-3ACB-4FF2-A1DB-7592B2DA93AC}"
+	ProjectSection(SolutionItems) = preProject
+		screenshots\s\NLapp Cat Ar.png = screenshots\s\NLapp Cat Ar.png
+		screenshots\s\NLapp Cat.png = screenshots\s\NLapp Cat.png
+		screenshots\s\NLapp Home Ar.png = screenshots\s\NLapp Home Ar.png
+		screenshots\s\NLapp Home Ti.png = screenshots\s\NLapp Home Ti.png
+		screenshots\s\NLapp Home.png = screenshots\s\NLapp Home.png
+		screenshots\s\NLapp Info1.png = screenshots\s\NLapp Info1.png
+		screenshots\s\NLapp Info2.png = screenshots\s\NLapp Info2.png
+		screenshots\s\NLapp Info3.png = screenshots\s\NLapp Info3.png
+		screenshots\s\NLapp Info4.png = screenshots\s\NLapp Info4.png
+		screenshots\s\NLapp Map.png = screenshots\s\NLapp Map.png
+		screenshots\s\NLapp Map2.png = screenshots\s\NLapp Map2.png
+		screenshots\s\NLapp Welkom.png = screenshots\s\NLapp Welkom.png
+		screenshots\s\NLapp Zoek Ti.png = screenshots\s\NLapp Zoek Ti.png
+		screenshots\s\NLapp Zoek.png = screenshots\s\NLapp Zoek.png
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D41AD260-6A47-482E-A6BB-D59FCB7CF38E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D41AD260-6A47-482E-A6BB-D59FCB7CF38E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{BB8FA351-E092-49C6-9B10-25FDA8423395} = {FBDA96DB-066B-4A25-B93A-08D5ADCBD088}
+		{F438AAE7-10BE-4359-A692-F671C0BD99D6} = {BB8FA351-E092-49C6-9B10-25FDA8423395}
+		{ACB13649-8571-4170-BCB8-8ADDAF036F2A} = {FBDA96DB-066B-4A25-B93A-08D5ADCBD088}
+		{0B490C76-5D36-40BF-9892-35B35FE0BA82} = {ACB13649-8571-4170-BCB8-8ADDAF036F2A}
+		{CE5DEF6D-3ACB-4FF2-A1DB-7592B2DA93AC} = {ACB13649-8571-4170-BCB8-8ADDAF036F2A}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C3CF98ED-6F06-4CDA-9172-5D4FE12BE4F6}
+	EndGlobalSection
+EndGlobal
